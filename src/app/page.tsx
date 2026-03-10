@@ -41,7 +41,7 @@ export default function Home() {
 
   return (
     <div className="flex flex-col gap-6 max-w-full min-h-screen items-center justify-center bg-zinc-50 dark:bg-black p-4">
-      {/* Search Bar */}
+      {/* Search Bar
       <div className="w-[300px]">
         <Select
           options={options}
@@ -49,14 +49,13 @@ export default function Home() {
           placeholder="Search country..."
           isClearable
         />
-      </div>
+      </div> */}
 
-      {/* Map */}
-      <Map
+      {/* <Map
         position={mapPosition}
         zoom={4} // adjust zoom for country view
         popupText={popupText}
-      />
+      /> */}
     </div>
   );
 }
