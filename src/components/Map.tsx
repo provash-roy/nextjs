@@ -3,11 +3,9 @@
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
-interface DefaultIconPrototype {
-  _getIconUrl?: string;
-}
 
-delete (L.Icon.Default.prototype as DefaultIconPrototype)._getIconUrl;
+// Fix Leaflet marker icon issue
+delete (L.Icon.Default.prototype as any)._getIconUrl;
 
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: new URL(
@@ -36,12 +34,13 @@ export default function Map({
   popupText = "Location",
 }: MapProps) {
   return (
-    <div className="w-[400px] h-[400px]">
+    <div className="w-[600px] h-[400px]">
       <MapContainer
         center={position}
         zoom={zoom}
         scrollWheelZoom={false}
         className="h-full w-full"
+        key={position.toString()} // forces map re-render on position change
       >
         <TileLayer
           attribution="&copy; OpenStreetMap contributors"
